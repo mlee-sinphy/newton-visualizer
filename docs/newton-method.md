@@ -115,3 +115,30 @@ x_0,x_1,x_2,\ldots
 $$
 
 which, under suitable regularity and initialization conditions, may converge to a root \(r\) of \(f\).
+
+## Algorithm
+
+Given a differentiable function
+
+$$
+f:\mathbb{R}\rightarrow\mathbb{R},
+$$
+
+its derivative $begin:math:text$f\'$end:math:text$, an initial approximation $begin:math:text$x\_0$end:math:text$, a tolerance $begin:math:text$\\varepsilon \> 0$end:math:text$, and a maximum number of iterations $begin:math:text$N\_\{\\max\}$end:math:text$, the Newton-Raphson method proceeds as follows:
+
+1. Set $begin:math:text$n\=0$end:math:text$.
+2. Evaluate $begin:math:text$f\(x\_n\)$end:math:text$ and $begin:math:text$f\'\(x\_n\)$end:math:text$.
+3. Compute
+
+   $$
+   x_{n+1}
+   =
+   x_n
+   -
+   \frac{f(x_n)}{f'(x_n)}.
+   $$
+
+4. If a stopping criterion is satisfied, terminate the procedure.
+5. Otherwise, increment $begin:math:text$n$end:math:text$ and repeat the process.
+
+The output of the algorithm is the last computed approximation together with the sequence of intermediate approximations generated during the iterative process.
