@@ -51,3 +51,29 @@ $$
 $$
 
 The Newton-Raphson method provides one such iterative procedure by recursively generating successive approximations that, under appropriate assumptions, converge to the desired root.
+
+## Geometric Motivation
+
+Suppose that an initial approximation
+
+$$
+x_0 \in \mathbb{R}
+$$
+
+is available and that
+
+$$
+f(x_0)\neq 0.
+$$
+
+Since the exact root is unknown, a direct solution of
+
+$$
+f(x)=0
+$$
+
+may be difficult or impossible to obtain analytically.
+
+If the function $begin:math:text$f$end:math:text$ is differentiable in a neighborhood of $begin:math:text$x\_0$end:math:text$, then its local behavior can be approximated by its tangent line at that point. The central idea of the Newton-Raphson method is therefore to replace the original nonlinear function by its linear approximation in the vicinity of $begin:math:text$x\_0$end:math:text$.
+
+The intersection of the tangent line with the horizontal axis provides a new approximation to the root. Repeating this construction recursively produces a sequence of approximations that, under suitable assumptions, converges to the desired solution.
