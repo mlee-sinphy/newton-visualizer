@@ -77,3 +77,41 @@ may be difficult or impossible to obtain analytically.
 If the function $begin:math:text$f$end:math:text$ is differentiable in a neighborhood of $begin:math:text$x\_0$end:math:text$, then its local behavior can be approximated by its tangent line at that point. The central idea of the Newton-Raphson method is therefore to replace the original nonlinear function by its linear approximation in the vicinity of $begin:math:text$x\_0$end:math:text$.
 
 The intersection of the tangent line with the horizontal axis provides a new approximation to the root. Repeating this construction recursively produces a sequence of approximations that, under suitable assumptions, converges to the desired solution.
+
+## Mathematical Derivation
+
+Let \(x_n\) be the current approximation to a root of \(f\). If \(f\) is differentiable near \(x_n\), its first-order Taylor approximation around \(x_n\) is
+
+$$
+f(x) \approx f(x_n) + f'(x_n)(x-x_n).
+$$
+
+The Newton-Raphson method replaces the nonlinear equation \(f(x)=0\) by the linearized equation
+
+$$
+f(x_n) + f'(x_n)(x-x_n)=0.
+$$
+
+Solving for \(x\), assuming \(f'(x_n)\neq 0\), gives
+
+$$
+x = x_n - \frac{f(x_n)}{f'(x_n)}.
+$$
+
+Thus, the next approximation is defined recursively by
+
+$$
+x_{n+1}
+=
+x_n
+-
+\frac{f(x_n)}{f'(x_n)}.
+$$
+
+This recurrence is the Newton-Raphson iteration formula. Starting from an initial guess \(x_0\), the method generates a sequence
+
+$$
+x_0,x_1,x_2,\ldots
+$$
+
+which, under suitable regularity and initialization conditions, may converge to a root \(r\) of \(f\).
