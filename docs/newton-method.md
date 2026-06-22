@@ -20,7 +20,7 @@ $$
 f:\mathbb{R}\rightarrow\mathbb{R}
 $$
 
-be a real-valued function, where both the domain and codomain of $begin:math:text$f$end:math:text$ are the set of real numbers.
+be a real-valued function, where both the domain and codomain of $f$ are the set of real numbers.
 
 The objective is to determine a value
 
@@ -34,9 +34,9 @@ $$
 f(r)=0.
 $$
 
-The value $begin:math:text$r$end:math:text$ is called a **root** or **zero** of the function $begin:math:text$f$end:math:text$. Geometrically, $begin:math:text$r$end:math:text$ corresponds to a point at which the graph of $begin:math:text$f$end:math:text$ intersects the horizontal axis.
+The value $r$ is called a **root** or **zero** of the function $f$. Geometrically, $r$ corresponds to a point at which the graph of $f$ intersects the horizontal axis.
 
-In general, an exact expression for $begin:math:text$r$end:math:text$ may not exist or may be difficult to obtain analytically. Numerical methods therefore seek to construct a sequence of approximations
+In general, an exact expression for $r$ may not exist or may be difficult to obtain analytically. Numerical methods therefore seek to construct a sequence of approximations
 
 $$
 \{x_n\}_{n=0}^{\infty},
@@ -63,7 +63,7 @@ $$
 is available and that
 
 $$
-f(x_0)\neq 0.
+f(x_0)\neq0.
 $$
 
 Since the exact root is unknown, a direct solution of
@@ -74,13 +74,13 @@ $$
 
 may be difficult or impossible to obtain analytically.
 
-If the function $begin:math:text$f$end:math:text$ is differentiable in a neighborhood of $begin:math:text$x\_0$end:math:text$, then its local behavior can be approximated by its tangent line at that point. The central idea of the Newton-Raphson method is therefore to replace the original nonlinear function by its linear approximation in the vicinity of $begin:math:text$x\_0$end:math:text$.
+If the function $f$ is differentiable in a neighborhood of $x_0$, then its local behavior can be approximated by its tangent line at that point. The central idea of the Newton-Raphson method is therefore to replace the original nonlinear function by its linear approximation in the vicinity of $x_0$.
 
 The intersection of the tangent line with the horizontal axis provides a new approximation to the root. Repeating this construction recursively produces a sequence of approximations that, under suitable assumptions, converges to the desired solution.
 
 ## Mathematical Derivation
 
-Let $begin:math:text$x\_n$end:math:text$ be the current approximation to a root of $begin:math:text$f$end:math:text$. If $begin:math:text$f$end:math:text$ is differentiable near $begin:math:text$x\_n$end:math:text$, its first-order Taylor approximation around $begin:math:text$x\_n$end:math:text$ is
+Let $x_n$ be the current approximation to a root of $f$. If $f$ is differentiable near $x_n$, its first-order Taylor approximation around $x_n$ is
 
 $$
 f(x)
@@ -109,10 +109,10 @@ $$
 Assuming that
 
 $$
-f'(x_n)\neq 0,
+f'(x_n)\neq0,
 $$
 
-solving for $begin:math:text$x$end:math:text$ yields
+solving for $x$ yields
 
 $$
 x
@@ -134,13 +134,13 @@ $$
 
 This recurrence relation constitutes the Newton-Raphson iteration formula.
 
-Starting from an initial approximation $begin:math:text$x\_0$end:math:text$, the method generates a sequence
+Starting from an initial approximation $x_0$, the method generates a sequence
 
 $$
 x_0,x_1,x_2,\ldots
 $$
 
-which, under suitable regularity and initialization conditions, may converge to a root $begin:math:text$r$end:math:text$ of the function.
+which, under suitable regularity and initialization conditions, may converge to a root $r$ of the function.
 
 ## Algorithm
 
@@ -150,10 +150,10 @@ $$
 f:\mathbb{R}\rightarrow\mathbb{R},
 $$
 
-its derivative $begin:math:text$f\'$end:math:text$, an initial approximation $begin:math:text$x\_0$end:math:text$, a tolerance $begin:math:text$\\varepsilon\>0$end:math:text$, and a maximum number of iterations $begin:math:text$N\_\{\\max\}$end:math:text$, the Newton-Raphson method proceeds as follows:
+its derivative $f'$, an initial approximation $x_0$, a tolerance $\varepsilon>0$, and a maximum number of iterations $N_{\max}$, the Newton-Raphson method proceeds as follows:
 
-1. Set $begin:math:text$n\=0$end:math:text$.
-2. Evaluate $begin:math:text$f\(x\_n\)$end:math:text$ and $begin:math:text$f\'\(x\_n\)$end:math:text$.
+1. Set $n=0$.
+2. Evaluate $f(x_n)$ and $f'(x_n)$.
 3. Compute
 
    $$
@@ -165,7 +165,7 @@ its derivative $begin:math:text$f\'$end:math:text$, an initial approximation $be
    $$
 
 4. Verify whether a stopping criterion has been satisfied.
-5. Otherwise, increment $begin:math:text$n$end:math:text$ and repeat the procedure.
+5. Otherwise, increment $n$ and repeat the procedure.
 
 The output of the algorithm is the final approximation together with the sequence of intermediate approximations generated during the iterative process.
 
@@ -179,7 +179,7 @@ $$
 |f(x_n)|<\varepsilon,
 $$
 
-where $begin:math:text$\\varepsilon\>0$end:math:text$ denotes a prescribed tolerance.
+where $\varepsilon>0$ denotes a prescribed tolerance.
 
 Another criterion is based on the difference between successive approximations:
 
@@ -189,25 +189,25 @@ $$
 
 This condition indicates that the iterative sequence is no longer changing significantly.
 
-In practice, it is also necessary to impose a maximum number of iterations $begin:math:text$N\_\{\\max\}$end:math:text$, preventing the algorithm from running indefinitely in cases where convergence does not occur.
+In practice, it is also necessary to impose a maximum number of iterations $N_{\max}$, preventing the algorithm from running indefinitely in cases where convergence does not occur.
 
 ## Convergence and Limitations
 
 The convergence properties of the Newton-Raphson method depend strongly on the regularity of the function and on the quality of the initial approximation.
 
-Suppose that $begin:math:text$r$end:math:text$ is a root of $begin:math:text$f$end:math:text$ satisfying
+Suppose that $r$ is a root of $f$ satisfying
 
 $$
 f(r)=0
 $$
 
-and assume that $begin:math:text$f$end:math:text$ is sufficiently smooth in a neighborhood of $begin:math:text$r$end:math:text$ and that
+and assume that $f$ is sufficiently smooth in a neighborhood of $r$ and that
 
 $$
-f'(r)\neq 0.
+f'(r)\neq0.
 $$
 
-Under these assumptions, if the initial approximation $begin:math:text$x\_0$end:math:text$ is sufficiently close to $begin:math:text$r$end:math:text$, the sequence generated by the Newton-Raphson iteration converges to the root.
+Under these assumptions, if the initial approximation $x_0$ is sufficiently close to $r$, the sequence generated by the Newton-Raphson iteration converges to the root.
 
 Moreover, the convergence is locally quadratic, meaning that the approximation error decreases very rapidly once the iterates enter a sufficiently small neighborhood of the solution.
 
@@ -222,15 +222,15 @@ Consequently, practical implementations of the Newton-Raphson method generally c
 
 ## Computational Complexity
 
-Let $begin:math:text$k$end:math:text$ denote the number of iterations required to satisfy a stopping criterion.
+Let $k$ denote the number of iterations required to satisfy a stopping criterion.
 
 At each iteration, the method performs:
 
-1. one evaluation of the function $begin:math:text$f$end:math:text$;
-2. one evaluation of its derivative $begin:math:text$f\'$end:math:text$;
+1. one evaluation of the function $f$;
+2. one evaluation of its derivative $f'$;
 3. a constant number of arithmetic operations.
 
-Assuming that the evaluations of $begin:math:text$f$end:math:text$ and $begin:math:text$f\'$end:math:text$ have constant cost, the computational complexity of the algorithm is
+Assuming that the evaluations of $f$ and $f'$ have constant cost, the computational complexity of the algorithm is
 
 $$
 T(k)=O(k).
