@@ -142,3 +142,31 @@ its derivative $begin:math:text$f\'$end:math:text$, an initial approximation $be
 5. Otherwise, increment $begin:math:text$n$end:math:text$ and repeat the process.
 
 The output of the algorithm is the last computed approximation together with the sequence of intermediate approximations generated during the iterative process.
+
+## Stopping Criteria
+
+Since the Newton-Raphson method is iterative, a stopping criterion is required to determine when the approximation is sufficiently accurate.
+
+A common criterion is based on the absolute value of the function:
+
+$$
+|f(x_n)| < \varepsilon,
+$$
+
+where \(\varepsilon > 0\) is a prescribed tolerance. This means that the current approximation is considered acceptable when the function value is sufficiently close to zero.
+
+Another common criterion is based on the change between consecutive approximations:
+
+$$
+|x_{n+1}-x_n| < \varepsilon.
+$$
+
+This condition indicates that the iterative sequence is no longer changing significantly.
+
+In practice, it is also necessary to impose a maximum number of iterations \(N_{\max}\). This prevents the algorithm from running indefinitely in cases where convergence does not occur.
+
+In this project, the solver will use three stopping controls:
+
+1. convergence by residual;
+2. convergence by step size;
+3. termination by maximum number of iterations.
