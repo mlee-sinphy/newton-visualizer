@@ -17,7 +17,30 @@ def newton_raphson(
     tolerance: float = 1e-8,
     max_iterations: int = 100,
 ) -> NewtonResult:
+    if not callable(f):
+        raise TypeError("f must be callable.")
+
+    if not callable(df):
+        raise TypeError("df must be callable.")
+
+    if tolerance <= 0:
+        raise ValueError("tolerance must be positive.")
+
+    if max_iterations < 0:
+        raise ValueError("max_iterations must be non-negative.")
+
     history = [x0]
+    initial_residual = abs(f(x0))
+
+    if initial_residual < tolerance:
+        return NewtonResult(
+            root=x0,
+            converged=True,
+            iterations=0,
+            history=history,
+            residual=initial_residual,
+        )
+
     x = x0
 
     for iteration in range(1, max_iterations + 1):
