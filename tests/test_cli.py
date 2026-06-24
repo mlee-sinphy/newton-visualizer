@@ -1,21 +1,29 @@
+import os
 import subprocess
 import sys
 
 
+def run_cli(args):
+    env = os.environ.copy()
+    env["PYTHONPATH"] = "src"
+
+    return subprocess.run(
+        [sys.executable, "-m", "newton_visualizer.cli", *args],
+        capture_output=True,
+        text=True,
+        env=env,
+    )
+
+
 def test_cli_solves_square_root_problem():
-    result = subprocess.run(
+    result = run_cli(
         [
-            sys.executable,
-            "-m",
-            "newton_visualizer.cli",
             "solve",
             "--function",
             "x**2 - 2",
             "--x0",
             "1.0",
-        ],
-        capture_output=True,
-        text=True,
+        ]
     )
 
     assert result.returncode == 0
@@ -26,11 +34,8 @@ def test_cli_solves_square_root_problem():
 def test_cli_generates_plot(tmp_path):
     output_file = tmp_path / "plot.png"
 
-    result = subprocess.run(
+    result = run_cli(
         [
-            sys.executable,
-            "-m",
-            "newton_visualizer.cli",
             "solve",
             "--function",
             "x**2 - 2",
@@ -38,9 +43,7 @@ def test_cli_generates_plot(tmp_path):
             "1.0",
             "--plot",
             str(output_file),
-        ],
-        capture_output=True,
-        text=True,
+        ]
     )
 
     assert result.returncode == 0
@@ -48,33 +51,20 @@ def test_cli_generates_plot(tmp_path):
 
 
 def test_cli_rejects_invalid_expression():
-    result = subprocess.run(
+    result = run_cli(
         [
-            sys.executable,
-            "-m",
-            "newton_visualizer.cli",
             "solve",
             "--function",
             "y**2 - 2",
             "--x0",
             "1.0",
-        ],
-        capture_output=True,
-        text=True,
+        ]
     )
 
     assert result.returncode != 0
 
 
 def test_cli_rejects_missing_arguments():
-    result = subprocess.run(
-        [
-            sys.executable,
-            "-m",
-            "newton_visualizer.cli",
-        ],
-        capture_output=True,
-        text=True,
-    )
+    result = run_cli([])
 
     assert result.returncode != 0
