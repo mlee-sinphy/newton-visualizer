@@ -35,3 +35,32 @@ def plot_function_with_iterations(
         fig.savefig(output_path)
 
     return fig, ax
+
+
+def plot_residual_convergence(
+    f,
+    result,
+    output_path=None,
+):
+    if not callable(f):
+        raise TypeError("f must be callable.")
+
+    if not result.history:
+        raise ValueError("result history must not be empty.")
+
+    iterations = list(range(len(result.history)))
+    residuals = [abs(f(x)) for x in result.history]
+
+    fig, ax = plt.subplots()
+
+    ax.plot(iterations, residuals, marker="o", label="Residual")
+    ax.set_xlabel("Iteration")
+    ax.set_ylabel("|f(x_n)|")
+    ax.set_title("Residual Convergence")
+    ax.grid(True)
+    ax.legend()
+
+    if output_path is not None:
+        fig.savefig(output_path)
+
+    return fig, ax
