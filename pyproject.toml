@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "newton-visualizer"
+version = "0.1.0"
+description = "A Python toolkit for visualizing the Newton-Raphson method."
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [
+    { name = "M Lee" }
+]
+
+dependencies = [
+    "matplotlib",
+    "sympy",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "notebook",
+    "ipykernel",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
