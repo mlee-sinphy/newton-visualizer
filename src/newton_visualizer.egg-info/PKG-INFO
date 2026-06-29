@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: newton-visualizer
+Version: 0.1.0
+Summary: A Python toolkit for visualizing the Newton-Raphson method.
+Author: M Lee
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+Requires-Dist: matplotlib
+Requires-Dist: sympy
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: notebook; extra == "dev"
+Requires-Dist: ipykernel; extra == "dev"

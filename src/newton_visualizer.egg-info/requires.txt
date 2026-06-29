@@ -1,0 +1,7 @@
+matplotlib
+sympy
+
+[dev]
+pytest
+notebook
+ipykernel
